@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<addons><addon id="plugin.video.example" name="Example Kodi Video Plugin" provider-name="Roman_V_M" version="2.4.0">
+<requires>
+  <import addon="xbmc.python" version="3.0.0" />
+  <import addon="script.module.requests" version="2.22.0" />
+</requires>
+<extension library="main.py" point="xbmc.python.pluginsource">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Example Kodi Video Plugin</summary>
+  <description lang="en_GB">An example video plugin for Kodi mediacenter.</description>
+  <disclaimer lang="en_GB">Free sample videos are provided by www.vidsplay.com.</disclaimer>
+  <assets>
+    <icon>icon.png</icon>
+    <fanart>fanart.jpg</fanart>
+    <screenshot>resources\screenshot-01.jpg</screenshot>
+    <screenshot>resources\screenshot-02.jpg</screenshot>
+    <screenshot>resources\screenshot-03.jpg</screenshot>    
+  </assets>
+  <news>Updated with latest artwork metadata</news>
+</extension>
+</addon><addon id="sams.movies" name="sgreaves1.github.io" provider-name="sgreaves1" version="0.0.1">
+    <extension name="Example Repository" point="xbmc.addon.repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>sgreaves1.github.io</summary>
+        <description>Shows movies</description>
+        <disclaimer>Not the owner of the files, just a scraper</disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon></addons>
