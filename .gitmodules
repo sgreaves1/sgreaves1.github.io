@@ -1,0 +1,3 @@
+[submodule "repo/plugin.video.example"]
+	path = repo/plugin.video.example
+	url = https://github.com/sgreaves1/plugin.video.example.git
