@@ -24,7 +24,6 @@
     <extension name="Example Repository" point="xbmc.addon.repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/</datadir>
         </dir>
     </extension>
