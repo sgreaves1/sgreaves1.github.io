@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.example"
-version="2.4.0"
-name="Example Kodi Video Plugin"
-provider-name="Roman_V_M">
+<addon id="sams.movies"
+version="0.0.1"
+name="Sams Movies"
+provider-name="Sam">
 <requires>
   <import addon="xbmc.python" version="3.0.0"/>
   <import addon="script.module.requests" version="2.22.0" />
@@ -11,9 +11,9 @@ provider-name="Roman_V_M">
   <provides>video</provides>
 </extension>
 <extension point="xbmc.addon.metadata">
-  <summary lang="en">Example Kodi Video Plugin</summary>
-  <description lang="en_GB">An example video plugin for Kodi mediacenter.</description>
-  <disclaimer lang="en_GB">Free sample videos are provided by www.vidsplay.com.</disclaimer>
+  <summary lang="en">Plugin to play Sams Movies</summary>
+  <description lang="en_GB">A video plugin for Kodi to play videos.</description>
+  <disclaimer lang="en_GB">I do not own the videos, this is just a scraper.</disclaimer>
   <assets>
     <icon>icon.png</icon>
     <fanart>fanart.jpg</fanart>
@@ -21,6 +21,6 @@ provider-name="Roman_V_M">
     <screenshot>resources\screenshot-02.jpg</screenshot>
     <screenshot>resources\screenshot-03.jpg</screenshot>    
   </assets>
-  <news>Updated with latest artwork metadata</news>
+  <news>Updated addon information file</news>
 </extension>
 </addon>
