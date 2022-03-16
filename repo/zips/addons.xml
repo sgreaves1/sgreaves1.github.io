@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.example" version="2.4.0" name="Example Kodi Video Plugin" provider-name="Roman_V_M">
+<addons><addon id="plugin.video.example" version="2.4.0" name="Sams Movies" provider-name="Sam">
 <requires>
   <import addon="xbmc.python" version="3.0.0" />
   <import addon="script.module.requests" version="2.22.0" />
@@ -8,9 +8,9 @@
   <provides>video</provides>
 </extension>
 <extension point="xbmc.addon.metadata">
-  <summary lang="en">Example Kodi Video Plugin</summary>
-  <description lang="en_GB">An example video plugin for Kodi mediacenter.</description>
-  <disclaimer lang="en_GB">Free sample videos are provided by www.vidsplay.com.</disclaimer>
+  <summary lang="en">Plugin to play Sams Movies</summary>
+  <description lang="en_GB">A video plugin for Kodi to play videos.</description>
+  <disclaimer lang="en_GB">I do not own the videos, this is just a scraper.</disclaimer>
   <assets>
     <icon>icon.png</icon>
     <fanart>fanart.jpg</fanart>
@@ -18,7 +18,7 @@
     <screenshot>resources\screenshot-02.jpg</screenshot>
     <screenshot>resources\screenshot-03.jpg</screenshot>    
   </assets>
-  <news>Updated with latest artwork metadata</news>
+  <news>Updated addon information file</news>
 </extension>
 </addon><addon id="sams.movies" name="sgreaves1.github.io" version="0.0.1" provider-name="sgreaves1">
     <extension point="xbmc.addon.repository" name="Example Repository">
@@ -30,7 +30,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>sgreaves1.github.io</summary>
-        <description>Shows movies</description>
+        <description>Plays Sams movies</description>
         <disclaimer>Not the owner of the files, just a scraper</disclaimer>
         <platform>all</platform>
         <assets>
