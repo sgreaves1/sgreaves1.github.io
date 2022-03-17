@@ -21,7 +21,7 @@ _handle = int(sys.argv[1])
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
-VIDEOS = r.json
+VIDEOS = r.json()
 
 def get_url(**kwargs):
     """
@@ -48,7 +48,7 @@ def get_categories():
     :return: The list of video categories
     :rtype: types.GeneratorType
     """
-    return ['Movies', 'Tv Shows']
+    return VIDEOS.keys()
 
 
 def get_videos(category):
@@ -88,9 +88,9 @@ def list_categories():
         # Set graphics (thumbnail, fanart, banner, poster, landscape etc.) for the list item.
         # Here we use the same image for all items for simplicity's sake.
         # In a real-life plugin you need to set each image accordingly.
-        list_item.setArt({'thumb': "",
-                          'icon': "",
-                          'fanart': ""})
+        list_item.setArt({'thumb': VIDEOS[category][0]['thumb'],
+                          'icon': VIDEOS[category][0]['thumb'],
+                          'fanart': VIDEOS[category][0]['thumb']})
         # Set additional info for the list item.
         # Here we use a category name for both properties for for simplicity's sake.
         # setInfo allows to set various information for an item.
