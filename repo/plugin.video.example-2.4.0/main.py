@@ -48,7 +48,7 @@ def get_categories():
     :return: The list of video categories
     :rtype: types.GeneratorType
     """
-    return VIDEOS.keys()
+    return dict_keys(['Movies', 'TvShows'])
 
 
 def get_videos(category):
