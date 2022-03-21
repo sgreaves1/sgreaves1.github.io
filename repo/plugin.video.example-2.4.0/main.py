@@ -1,9 +1,9 @@
 # Module: main
-# Author: Roman V. M.
-# Created on: 28.11.2014
+# Author: Sam Greaves
+# Created on: 15.03.2022
 # License: GPL v.3 https://www.gnu.org/copyleft/gpl.html
 """
-Example video plugin that is compatible with Kodi 19.x "Matrix" and above
+Video addon that is compatible with Kodi 19.x "Matrix" and above
 """
 import sys
 from urllib.parse import urlencode, parse_qsl
@@ -16,10 +16,6 @@ _url = sys.argv[0]
 # Get the plugin handle as an integer number.
 _handle = int(sys.argv[1])
 
-# Free sample videos are provided by www.vidsplay.com
-# Here we use a fixed set of properties simply for demonstrating purposes
-# In a "real life" plugin you will need to get info and links to video files/streams
-# from some web-site or online service.
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
 
