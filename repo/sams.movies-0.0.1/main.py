@@ -90,7 +90,7 @@ def list_shows():
 
     shows = []
     for x in DATA:
-        if x.['name'] == 'Tv Shows':
+        if x['name'] == 'Tv Shows':
             shows = x
 
     for show in shows:
