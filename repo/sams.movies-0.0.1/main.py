@@ -76,8 +76,6 @@ def get_videos(category):
     :return: the list of videos in the category
     :rtype: list
     """
-    print(category)
-
     for x in DATA:
         if x['name'] == category:
             return x['videos']
@@ -166,7 +164,7 @@ def list_videos(category):
     # Get the list of videos in the category.
     videos = get_videos(category)
     # Iterate through videos.
-    for video in videos['videos']:
+    for video in videos:
         # Create a list item with a text label and a thumbnail image.
         list_item = xbmcgui.ListItem(label=video['name'])
         # Set additional info for the list item.
