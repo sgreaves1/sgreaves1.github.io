@@ -254,16 +254,16 @@ def router(paramstring):
     params = dict(parse_qsl(paramstring))
     # Check the parameters passed to the plugin
     if params:
-        if params['action'] == 'listing' and params['category'] == 'Movies':
+        if params['action'] == 'play':
+            # Play a video from a provided URL.
+            play_video(params['video'])
+        elif params['action'] == 'listing' and params['category'] == 'Movies':
             # Display the list of videos in a provided category.
             list_videos(params['category'])
         elif params['action'] == 'listing' and params['category'] == 'TV Shows':
             list_shows()
         elif params['action'] == 'listing':
             list_episodes(params['category'])
-        elif params['action'] == 'play':
-            # Play a video from a provided URL.
-            play_video(params['video'])
         else:
             # If the provided paramstring does not contain a supported action
             # we raise an exception. This helps to catch coding errors,
