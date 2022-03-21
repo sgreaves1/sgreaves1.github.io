@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.example" version="2.4.0" name="Sams Movies" provider-name="Sam">
+<addons><addon id="sams.movies" version="0.0.1" name="Sams Movies" provider-name="Sam">
 <requires>
   <import addon="xbmc.python" version="3.0.0" />
   <import addon="script.module.requests" version="2.22.0" />
@@ -20,7 +20,7 @@
   </assets>
   <news>Updated addon information file</news>
 </extension>
-</addon><addon id="sams.movies" name="sgreaves1.github.io" version="0.0.1" provider-name="sgreaves1">
+</addon><addon id="sams.movies.repo" name="sgreaves1.github.io" version="0.0.1" provider-name="sgreaves1">
     <extension point="xbmc.addon.repository" name="Example Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/repo/zips/addons.xml</info>
