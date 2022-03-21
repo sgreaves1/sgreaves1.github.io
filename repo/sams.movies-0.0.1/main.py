@@ -76,8 +76,28 @@ def get_videos(category):
     :return: the list of videos in the category
     :rtype: list
     """
-    return VIDEOS[category]
+    return DATA[category]
 
+def list_shows():
+    xbmcplugin.setPluginCategory(_handle, 'Tv Shows')
+    xbmcplugin.setContent(_handle, 'videos')
+
+    shows = next((x for x in DATA if x.name == 'Tv Shows'), none)
+
+    for show in shows:
+         list_item = xbmcgui.ListItem(label=show['name'])
+         list_item.setArt({'thumb': show['thumb'],
+                           'icon': show['thumb'],
+                           'fanart': show['thumb']})
+         list_item.setInfo('video', {'title': show['name'],
+                                     'genre': show['name'],
+                                     'mediatype': 'video'})
+         url = get_url(action='listing', category=show['name'])
+         is_folder = True
+         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+
+    xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
+    xbmcplugin.endOfDirectory(_handle)
 
 def list_categories():
     """
@@ -137,7 +157,7 @@ def list_videos(category):
     # Get the list of videos in the category.
     videos = get_videos(category)
     # Iterate through videos.
-    for video in videos:
+    for video in videos['videos']:
         # Create a list item with a text label and a thumbnail image.
         list_item = xbmcgui.ListItem(label=video['name'])
         # Set additional info for the list item.
@@ -192,9 +212,11 @@ def router(paramstring):
     params = dict(parse_qsl(paramstring))
     # Check the parameters passed to the plugin
     if params:
-        if params['action'] == 'listing':
+        if params['action'] == 'listing' and params['category'] == 'Movies':
             # Display the list of videos in a provided category.
             list_videos(params['category'])
+        elif params['action'] == 'listing' and params['category'] == 'TV Shows':
+            list_shows()
         elif params['action'] == 'play':
             # Play a video from a provided URL.
             play_video(params['video'])
