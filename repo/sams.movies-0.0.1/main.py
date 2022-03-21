@@ -76,7 +76,7 @@ def get_videos(category):
     :return: the list of videos in the category
     :rtype: list
     """
-    return DATA[category]
+    return next((x for x in DATA if x.name == category), none)
 
 def list_shows():
     xbmcplugin.setPluginCategory(_handle, 'Tv Shows')
