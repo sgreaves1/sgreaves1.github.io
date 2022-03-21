@@ -41,7 +41,12 @@ DATA = [{
                             'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
                             'genre': "Action, Fantasy",
                             'episodes': [{
-                                            'name': '1 - first episode name',
+                                            'name': '1 - First episode name',
+                                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
+                                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
+                                            'genre': "Action, Fantasy"
+                            },{
+                                            'name': '2 - Second episode name',
                                             'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
                                             'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
                                             'genre': "Action, Fantasy"
@@ -105,6 +110,36 @@ def list_shows():
 
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
+
+def list_episodes(showName):
+    xbmcplugin.setPluginCategory(_handle, showName)
+    xbmcplugin.setContent(_handle, 'videos')
+
+    episodes = []
+    for category in DATA:
+        if category['name'] == 'TV Shows':
+            for show in category['shows']
+                if show['name'] == showName
+                    episodes = show['episodes']
+
+
+    for episode in episodes:
+        list_item = xbmcgui.ListItem(label=episode['name'])
+        list_item.setArt({'thumb': episode['thumb'],
+                          'icon': episode['thumb'],
+                          'fanart': episode['thumb']})
+        list_item.setInfo('video', {'title': episode['name'],
+                                    'genre': episode['name'],
+                                    'mediatype': 'video'})
+
+        list_item.setProperty('IsPlayable', 'true')
+        url = get_url(action='listing', category=episode['video'])
+        is_folder = False
+        xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+
+    xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
+    xbmcplugin.endOfDirectory(_handle)
+
 
 def list_categories():
     """
@@ -224,6 +259,8 @@ def router(paramstring):
             list_videos(params['category'])
         elif params['action'] == 'listing' and params['category'] == 'TV Shows':
             list_shows()
+        elif params['action'] == 'listing'
+            list_episodes()
         elif params['action'] == 'play':
             # Play a video from a provided URL.
             play_video(params['video'])
