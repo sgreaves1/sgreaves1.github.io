@@ -70,18 +70,6 @@ DATA = [{
                                     'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
                                     'genre': "Action, Fantasy"
                                 }]
-                            }
-                            ]
-                            'episodes': [{
-                                            'name': '1 - First episode name',
-                                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                            'genre': "Action, Fantasy"
-                            },{
-                                            'name': '2 - Second episode name',
-                                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                            'genre': "Action, Fantasy"
                             }]
                         }]
           }]
