@@ -117,7 +117,7 @@ def list_shows():
          list_item.setInfo('video', {'title': show['name'],
                                      'genre': show['name'],
                                      'mediatype': 'video'})
-         url = get_url(action='listing', show=show['name'] category='show')
+         url = get_url(action='listing', show=show['name'], category='show')
          is_folder = True
          xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
 
