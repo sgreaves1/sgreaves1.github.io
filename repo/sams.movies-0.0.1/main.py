@@ -78,7 +78,7 @@ def get_videos(category):
     """
     print(category)
 
-    for x in DATA
+    for x in DATA:
         if x.name == category:
             return x.videos
 
@@ -89,7 +89,7 @@ def list_shows():
     xbmcplugin.setContent(_handle, 'videos')
 
     shows = []
-    for x in DATA
+    for x in DATA:
         if x.name == 'Tv Shows':
             shows = x
 
