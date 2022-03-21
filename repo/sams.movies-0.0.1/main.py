@@ -19,7 +19,7 @@ _handle = int(sys.argv[1])
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
 
-DATA = {[{
+DATA = [{
             'name': 'Movies',
             'thumb': '',
             'icon': '',
@@ -48,7 +48,7 @@ DATA = {[{
                             }]
                         }]
           }
-       ]}
+       ]
 
 def get_url(**kwargs):
     """
