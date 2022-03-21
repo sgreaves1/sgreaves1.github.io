@@ -133,7 +133,7 @@ def list_episodes(showName):
                                     'mediatype': 'video'})
 
         list_item.setProperty('IsPlayable', 'true')
-        url = get_url(action='listing', video=episode['video'])
+        url = get_url(action='action', video=episode['video'])
         is_folder = False
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
 
