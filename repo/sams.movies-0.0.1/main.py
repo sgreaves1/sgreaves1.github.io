@@ -159,7 +159,7 @@ def list_episodes(showName, seasonNumber):
             for show in category['shows']:
                 if show['name'] == showName:
                     for season in show['seasons']:
-                        if season['number'] == seasonNumber
+                        if season['number'] == seasonNumber:
                             episodes = season['episodes']
 
 
