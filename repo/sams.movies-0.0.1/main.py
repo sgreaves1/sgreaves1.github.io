@@ -233,7 +233,7 @@ def router(paramstring):
         elif params['action'] == 'listing' and params['category'] == 'show':
             list_seasons(params['show'])
         elif params['action'] == 'listing' and params['category'] == 'episodes':
-            list_episodes(params['show'], params['seasonNumber'])
+            list_episodes(params['show'], params['season'])
         else:
             # If the provided paramstring does not contain a supported action
             # we raise an exception. This helps to catch coding errors,
