@@ -118,8 +118,8 @@ def list_episodes(showName):
     episodes = []
     for category in DATA:
         if category['name'] == 'TV Shows':
-            for show in category['shows']
-                if show['name'] == showName
+            for show in category['shows']:
+                if show['name'] == showName:
                     episodes = show['episodes']
 
 
