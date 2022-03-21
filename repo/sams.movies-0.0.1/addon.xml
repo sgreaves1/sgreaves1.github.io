@@ -21,6 +21,6 @@ provider-name="Sam">
     <screenshot>resources\screenshot-02.jpg</screenshot>
     <screenshot>resources\screenshot-03.jpg</screenshot>    
   </assets>
-  <news>Updated addon information file</news>
+  <news>Updated screenshots</news>
 </extension>
 </addon>
