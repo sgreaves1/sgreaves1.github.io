@@ -76,13 +76,22 @@ def get_videos(category):
     :return: the list of videos in the category
     :rtype: list
     """
-    return next((x for x in DATA if x.name == category), none)
+    print(category)
+
+    for x in DATA
+        if x.name == category:
+            return x.videos
+
+    return none
 
 def list_shows():
     xbmcplugin.setPluginCategory(_handle, 'Tv Shows')
     xbmcplugin.setContent(_handle, 'videos')
 
-    shows = next((x for x in DATA if x.name == 'Tv Shows'), none)
+    shows = []
+    for x in DATA
+        if x.name == 'Tv Shows':
+            shows = x
 
     for show in shows:
          list_item = xbmcgui.ListItem(label=show['name'])
