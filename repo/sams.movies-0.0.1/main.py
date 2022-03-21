@@ -139,8 +139,8 @@ def list_seasons(showName):
         list_item.setArt({'thumb': season['thumb'],
                           'icon': season['thumb'],
                           'fanart': season['thumb']})
-        list_item.setInfo('video', {'title': season['name'],
-                                    'genre': season['name'],
+        list_item.setInfo('video', {'title': 'Season ' + str(season['number']),
+                                    'genre': 'Season ' + str(season['number']),
                                     'mediatype': 'video'})
 
         url = get_url(action='listing', category='episodes', show=showName, season=season['number'])
