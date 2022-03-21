@@ -80,7 +80,7 @@ def get_videos(category):
 
     for x in DATA:
         if x['name'] == category:
-            return x.videos
+            return x['videos']
 
     return none
 
@@ -91,7 +91,7 @@ def list_shows():
     shows = []
     for x in DATA:
         if x['name'] == 'Tv Shows':
-            shows = x
+            shows = x['shows']
 
     for show in shows:
          list_item = xbmcgui.ListItem(label=show['name'])
