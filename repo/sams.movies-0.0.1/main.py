@@ -19,6 +19,37 @@ _handle = int(sys.argv[1])
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
 
+DATA = {[{
+            'name': 'Movies',
+            'thumb': '',
+            'icon': '',
+            'fanart': '',
+            'videos': [{
+                            'name': "The Adam Project",
+                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
+                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
+                            'genre': "Action, Adventure, Comedy"
+                       }]
+          },
+          {
+             'name': 'TV Shows',
+             'thumb': '',
+             'icon': '',
+             'fanart': '',
+             'shows': [{
+                            'name': "Game Of Thrones",
+                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
+                            'genre': "Action, Fantasy",
+                            'episodes': [{
+                                            'name': '1 - first episode name',
+                                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
+                                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
+                                            'genre': "Action, Fantasy"
+                            }]
+                        }]
+          }
+       ]}
+
 def get_url(**kwargs):
     """
     Create a URL for calling the plugin recursively from the given set of keyword arguments.
@@ -28,23 +59,6 @@ def get_url(**kwargs):
     :rtype: str
     """
     return '{0}?{1}'.format(_url, urlencode(kwargs))
-
-
-def get_categories():
-    """
-    Get the list of video categories.
-
-    Here you can insert some parsing code that retrieves
-    the list of video categories (e.g. 'Movies', 'TV-shows', 'Documentaries' etc.)
-    from some site or API.
-
-    .. note:: Consider using `generator functions <https://wiki.python.org/moin/Generators>`_
-        instead of returning lists.
-
-    :return: The list of video categories
-    :rtype: types.GeneratorType
-    """
-    return VIDEOS.keys()
 
 
 def get_videos(category):
@@ -78,27 +92,27 @@ def list_categories():
     # Get video categories
     categories = get_categories()
     # Iterate through categories
-    for category in categories:
+    for category in DATA:
         # Create a list item with a text label and a thumbnail image.
-        list_item = xbmcgui.ListItem(label=category)
+        list_item = xbmcgui.ListItem(label=category.name)
         # Set graphics (thumbnail, fanart, banner, poster, landscape etc.) for the list item.
         # Here we use the same image for all items for simplicity's sake.
         # In a real-life plugin you need to set each image accordingly.
-        list_item.setArt({'thumb': VIDEOS[category][0]['thumb'],
-                          'icon': VIDEOS[category][0]['thumb'],
-                          'fanart': VIDEOS[category][0]['thumb']})
+        list_item.setArt({'thumb': category['thumb'],
+                          'icon': category['thumb'],
+                          'fanart': category['thumb']})
         # Set additional info for the list item.
         # Here we use a category name for both properties for for simplicity's sake.
         # setInfo allows to set various information for an item.
         # For available properties see the following link:
         # https://codedocs.xyz/xbmc/xbmc/group__python__xbmcgui__listitem.html#ga0b71166869bda87ad744942888fb5f14
         # 'mediatype' is needed for a skin to display info for this ListItem correctly.
-        list_item.setInfo('video', {'title': category,
-                                    'genre': category,
+        list_item.setInfo('video', {'title': category['name'],
+                                    'genre': category['name'],
                                     'mediatype': 'video'})
         # Create a URL for a plugin recursive call.
         # Example: plugin://plugin.video.example/?action=listing&category=Animals
-        url = get_url(action='listing', category=category)
+        url = get_url(action='listing', category=category['name'])
         # is_folder = True means that this item opens a sub-list of lower level items.
         is_folder = True
         # Add our item to the Kodi virtual folder listing.
