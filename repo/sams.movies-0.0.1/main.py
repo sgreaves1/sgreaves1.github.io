@@ -259,7 +259,7 @@ def router(paramstring):
             list_videos(params['category'])
         elif params['action'] == 'listing' and params['category'] == 'TV Shows':
             list_shows()
-        elif params['action'] == 'listing'
+        elif params['action'] == 'listing':
             list_episodes()
         elif params['action'] == 'play':
             # Play a video from a provided URL.
