@@ -83,12 +83,12 @@ def get_videos(category):
     return none
 
 def list_shows():
-    xbmcplugin.setPluginCategory(_handle, 'Tv Shows')
+    xbmcplugin.setPluginCategory(_handle, 'TV Shows')
     xbmcplugin.setContent(_handle, 'videos')
 
     shows = []
     for x in DATA:
-        if x['name'] == 'Tv Shows':
+        if x['name'] == 'TV Shows':
             shows = x['shows']
 
     for show in shows:
