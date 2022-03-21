@@ -146,6 +146,8 @@ def list_seasons(showName):
         url = get_url(action='listing', category='episodes', show=showName, season=season['number'])
         is_folder = True
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+    xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
+    xbmcplugin.endOfDirectory(_handle)
 
 def list_episodes(showName, seasonNumber):
     xbmcplugin.setPluginCategory(_handle, showName)
