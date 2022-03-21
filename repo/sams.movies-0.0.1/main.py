@@ -79,7 +79,7 @@ def get_videos(category):
     print(category)
 
     for x in DATA:
-        if x.name == category:
+        if x['name'] == category:
             return x.videos
 
     return none
@@ -90,7 +90,7 @@ def list_shows():
 
     shows = []
     for x in DATA:
-        if x.name == 'Tv Shows':
+        if x.['name'] == 'Tv Shows':
             shows = x
 
     for show in shows:
