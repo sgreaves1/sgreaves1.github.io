@@ -135,7 +135,7 @@ def list_seasons(showName):
                     seasons = show['seasons']
 
     for season in seasons:
-        list_item = xbmcgui.ListItem(label='Season ' + season['number'])
+        list_item = xbmcgui.ListItem(label='Season ' + str(season['number']))
         list_item.setArt({'thumb': season['thumb'],
                           'icon': season['thumb'],
                           'fanart': season['thumb']})
