@@ -150,7 +150,7 @@ def list_seasons(showName):
     xbmcplugin.endOfDirectory(_handle)
 
 def list_episodes(showName, seasonNumber):
-    xbmcplugin.setPluginCategory(_handle, 'Season ' + str(seasonNumber))
+    xbmcplugin.setPluginCategory(_handle, showName + '/Season ' + str(seasonNumber))
     xbmcplugin.setContent(_handle, 'videos')
 
     episodes = []
@@ -163,7 +163,10 @@ def list_episodes(showName, seasonNumber):
                             episodes = season['episodes']
 
 
+    raise ValueError(episodes)
+
     for episode in episodes:
+        raise ValueError(episode['name'])
         list_item = xbmcgui.ListItem(label=episode['name'])
         list_item.setArt({'thumb': episode['thumb'],
                           'icon': episode['thumb'],
@@ -171,7 +174,6 @@ def list_episodes(showName, seasonNumber):
         list_item.setInfo('video', {'title': episode['name'],
                                     'genre': episode['name'],
                                     'mediatype': 'video'})
-
         list_item.setProperty('IsPlayable', 'true')
         url = get_url(action='play', video=episode['video'])
         is_folder = False
