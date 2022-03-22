@@ -150,7 +150,8 @@ def list_seasons(showName):
     xbmcplugin.endOfDirectory(_handle)
 
 def list_episodes(showName, seasonNumber):
-    xbmcplugin.setPluginCategory(_handle, showName + '/Season ' + str(seasonNumber))
+    raise ValueError('Here')
+    xbmcplugin.setPluginCategory(_handle, showName + '/ Season ' + str(seasonNumber))
     xbmcplugin.setContent(_handle, 'videos')
 
     episodes = []
