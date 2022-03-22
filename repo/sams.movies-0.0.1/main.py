@@ -160,6 +160,7 @@ def list_episodes(showName, seasonNumber):
                 if show['name'] == showName:
                     for season in show['seasons']:
                         if season['number'] == seasonNumber:
+                            raise ValueError(season['episodes'][0]['name'])
                             episodes = season['episodes']
 
     for episode in episodes:
