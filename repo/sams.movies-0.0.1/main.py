@@ -19,61 +19,6 @@ _handle = int(sys.argv[1])
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
 
-DATA = [{
-            'name': 'Movies',
-            'thumb': '',
-            'icon': '',
-            'fanart': '',
-            'videos': [{
-                            'name': "The Adam Project",
-                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                            'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                            'genre': "Action, Adventure, Comedy"
-                       }]
-          },
-          {
-             'name': 'TV Shows',
-             'thumb': '',
-             'icon': '',
-             'fanart': '',
-             'shows': [{
-                            'name': "Game Of Thrones",
-                            'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                            'genre': "Action, Fantasy",
-                            'seasons': [{
-                                'number': 1,
-                                'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                'genre': "Action, Fantasy",
-                                'episodes': [{
-                                    'name': '1 - First episode name',
-                                    'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                    'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                    'genre': "Action, Fantasy"
-                                },{
-                                    'name': '2 - Second episode name',
-                                    'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                    'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                    'genre': "Action, Fantasy"
-                                }]
-                            }, {
-                                'number': 2,
-                                'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                'genre': "Action, Fantasy",
-                                'episodes': [{
-                                    'name': '1 - First episode name',
-                                    'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                    'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                    'genre': "Action, Fantasy"
-                                },{
-                                    'name': '2 - Second episode name',
-                                    'thumb': "http://image.tmdb.org/t/p/original/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg",
-                                    'video': "http://samgreaves.com:3020/videos/tt2463208.mp4",
-                                    'genre': "Action, Fantasy"
-                                }]
-                            }]
-                        }]
-          }]
-
 def get_url(**kwargs):
     """
     Create a URL for calling the plugin recursively from the given set of keyword arguments.
@@ -88,7 +33,7 @@ def list_videos():
     xbmcplugin.setPluginCategory(_handle, 'Movies')
     xbmcplugin.setContent(_handle, 'videos')
 
-    for video in DATA['videos']:
+    for video in VIDEOS['videos']:
         list_item = xbmcgui.ListItem(label=video['name'])
         list_item.setInfo('video', {'title': video['name'],
                                     'genre': video['genre'],
@@ -105,7 +50,7 @@ def list_shows():
     xbmcplugin.setContent(_handle, 'videos')
 
     shows = []
-    for x in DATA:
+    for x in VIDEOS:
         if x['name'] == 'TV Shows':
             shows = x['shows']
 
@@ -128,7 +73,7 @@ def list_seasons(showName):
     xbmcplugin.setPluginCategory(_handle, showName)
     xbmcplugin.setContent(_handle, 'videos')
     seasons = []
-    for category in DATA:
+    for category in VIDEOS:
         if category['name'] == 'TV Shows':
             for show in category['shows']:
                 if show['name'] == showName:
@@ -154,7 +99,7 @@ def list_episodes(showName, seasonNumber):
     xbmcplugin.setContent(_handle, 'videos')
 
     episodes = []
-    for category in DATA:
+    for category in VIDEOS:
         if category['name'] == 'TV Shows':
             for show in category['shows']:
                 if show['name'] == showName:
@@ -181,7 +126,7 @@ def list_categories():
     xbmcplugin.setPluginCategory(_handle, 'Type')
     xbmcplugin.setContent(_handle, 'videos')
 
-    for category in DATA:
+    for category in VIDEOS:
         list_item = xbmcgui.ListItem(label=category['name'])
         list_item.setArt({'thumb': category['thumb'],
                           'icon': category['thumb'],
