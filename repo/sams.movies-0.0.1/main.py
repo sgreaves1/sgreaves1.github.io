@@ -33,7 +33,12 @@ def list_videos():
     xbmcplugin.setPluginCategory(_handle, 'Movies')
     xbmcplugin.setContent(_handle, 'videos')
 
-    for video in VIDEOS['videos']:
+    movies = []
+    for x in VIDEOS:
+        if x['name'] == 'Movies':
+            movies = x['videos']
+
+    for video in movies:
         list_item = xbmcgui.ListItem(label=video['name'])
         list_item.setInfo('video', {'title': video['name'],
                                     'genre': video['genre'],
