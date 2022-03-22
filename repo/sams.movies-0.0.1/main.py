@@ -163,7 +163,6 @@ def list_episodes(showName, seasonNumber):
                             episodes = season['episodes']
 
     for episode in episodes:
-        raise ValueError(episode['name'])
         list_item = xbmcgui.ListItem(label=episode['name'])
         list_item.setArt({'thumb': episode['thumb'],
                           'icon': episode['thumb'],
