@@ -162,9 +162,6 @@ def list_episodes(showName, seasonNumber):
                         if season['number'] == seasonNumber:
                             episodes = season['episodes']
 
-
-    raise ValueError(episodes)
-
     for episode in episodes:
         raise ValueError(episode['name'])
         list_item = xbmcgui.ListItem(label=episode['name'])
