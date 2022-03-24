@@ -63,7 +63,7 @@ def list_videos():
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     xbmcplugin.endOfDirectory(_handle)
 
-def list_channels()
+def list_channels():
     xbmcplugin.setPluginCategory(_handle, 'Live TV')
     xbmcplugin.setContent(_handle, 'videos')
 
