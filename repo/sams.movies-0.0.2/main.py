@@ -24,10 +24,10 @@ VIDEOS.append({
     'icon': 'fanart',
     'channels': [
         {
-            'name': 'Comedy Central East (720p) [Not 24/7]',
-            'thumb': 'https://cdn.tvpassport.com/image/station/240x135/comedycentral.png',
-            'video': 'https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d4947590ba40f75dc29c26b/master.m3u8?advertisingId=&appName=web&appStoreUrl=&appVersion=DNT&app_name=&architecture=&buildVersion=&deviceDNT=0&deviceId=5d4947590ba40f75dc29c26b&deviceLat=51.2993&deviceLon=9.4910&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=DNT&includeExtendedEvents=false&marketingRegion=DE&serverSideAds=false&sid=400&terminate=false&userId=',
-            'genre': 'comedy'
+            'name': 'BBC One North East (540p)',
+            'thumb': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/BBC_One_logo_%28box_variant%29.svg/2560px-BBC_One_logo_%28box_variant%29.svg.png',
+            'video': 'https://vs-hls-pushb-uk-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_one_north_east/mobile_wifi_main_sd_abr_v2_akamai_hls_live_http.m3u8',
+            'genre': 'Entertainment'
         }
     ]
 })
