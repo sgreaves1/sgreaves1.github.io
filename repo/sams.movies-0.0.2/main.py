@@ -73,13 +73,13 @@ def list_channels():
             channels = x['channels']
 
     for channel in channels:
-        list_item = xbmcgui.ListItem(label=video['name'])
-        list_item.setInfo('video', {'title': video['name'],
-                                    'genre': video['name'],
+        list_item = xbmcgui.ListItem(label=channel['name'])
+        list_item.setInfo('video', {'title': channel['name'],
+                                    'genre': channel['name'],
                                     'mediatype': 'video'})
-        list_item.setArt({'thumb': video['thumb'], 'icon': video['thumb'], 'fanart': video['thumb']})
+        list_item.setArt({'thumb': channel['thumb'], 'icon': channel['thumb'], 'fanart': channel['thumb']})
         list_item.setProperty('IsPlayable', 'true')
-        url = get_url(action='play', video=video['video'])
+        url = get_url(action='play', video=channel['video'])
         is_folder = False
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     xbmcplugin.endOfDirectory(_handle)
