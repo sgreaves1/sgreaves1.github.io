@@ -18,6 +18,19 @@ _handle = int(sys.argv[1])
 
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
+VIDEOS.append({
+    'name': 'Live TV',
+    'thumb': '',
+    'icon': 'fanart',
+    'channels': [
+        {
+            'name': 'Comedy Central East (720p) [Not 24/7]',
+            'thumb': 'https://cdn.tvpassport.com/image/station/240x135/comedycentral.png',
+            'video': 'https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d4947590ba40f75dc29c26b/master.m3u8?advertisingId=&appName=web&appStoreUrl=&appVersion=DNT&app_name=&architecture=&buildVersion=&deviceDNT=0&deviceId=5d4947590ba40f75dc29c26b&deviceLat=51.2993&deviceLon=9.4910&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=DNT&includeExtendedEvents=false&marketingRegion=DE&serverSideAds=false&sid=400&terminate=false&userId=',
+            'genre': 'comedy'
+        }
+    ]
+})
 
 def get_url(**kwargs):
     """
@@ -49,6 +62,28 @@ def list_videos():
         is_folder = False
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     xbmcplugin.endOfDirectory(_handle)
+
+def list_channels()
+    xbmcplugin.setPluginCategory(_handle, 'Live TV')
+    xbmcplugin.setContent(_handle, 'videos')
+
+    channels = []
+    for x in VIDEOS:
+        if x['name'] == 'Live TV':
+            channels = x['channels']
+
+    for channel in channels:
+        list_item = xbmcgui.ListItem(label=video['name'])
+        list_item.setInfo('video', {'title': video['name'],
+                                    'genre': video['name'],
+                                    'mediatype': 'video'})
+        list_item.setArt({'thumb': video['thumb'], 'icon': video['thumb'], 'fanart': video['thumb']})
+        list_item.setProperty('IsPlayable', 'true')
+        url = get_url(action='play', video=video['video'])
+        is_folder = False
+        xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+    xbmcplugin.endOfDirectory(_handle)
+
 
 def list_shows():
     xbmcplugin.setPluginCategory(_handle, 'TV Shows')
@@ -183,6 +218,8 @@ def router(paramstring):
             list_seasons(params['show'])
         elif params['action'] == 'listing' and params['category'] == 'episodes':
             list_episodes(params['show'], params['season'])
+        elif params['action'] == 'listing' and params['category'] == 'Live TV':
+            list_channels()
         else:
             # If the provided paramstring does not contain a supported action
             # we raise an exception. This helps to catch coding errors,
