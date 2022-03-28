@@ -67,7 +67,7 @@ def api_request(case, channel_id=None):
         raise ValueError(resp["msg"])
 
 def update_channels():
-    return = api_request("get_all_channels")["channels"]
+    return api_request("get_all_channels")["channels"]
 #     _category_list = []
 #     _categories = []
 #     for c in _channels:
