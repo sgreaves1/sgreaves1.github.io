@@ -76,7 +76,7 @@ def update_channels():
                 'id' : c.get("pk_id"),
                 'name': c.get("channel_name"),
                 'thumb': "https://rocktalk.net/tv/" + c.get("img"),
-                'video': '',
+                'video': get_channel_links(c.get("pk_id")),
                 'genre': c.get("cat_name")
             })
     return _channels_list
