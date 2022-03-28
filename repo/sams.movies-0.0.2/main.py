@@ -68,7 +68,7 @@ VIDEOS.append({
         {
             'name': 'Test',
             'thumb': '',
-            'video': ' http://stream.tvtap.live:8081/live/uk-amc.stream/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9My8yOC8yMDIyIDg6MTA6NTkgUE0maGFzaF92YWx1ZT1kalRDWGFrZnh1Yk5WUXVRQXI4czVnPT0mdmFsaWRtaW51dGVzPTIw',
+            'video': 'http://stream.tvtap.live:8081/live/uk-amc.stream/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9My8yOC8yMDIyIDg6MTA6NTkgUE0maGFzaF92YWx1ZT1kalRDWGFrZnh1Yk5WUXVRQXI4czVnPT0mdmFsaWRtaW51dGVzPTIw',
             'genre': 'Entertainment'
         }
     ]
