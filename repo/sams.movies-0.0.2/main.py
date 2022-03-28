@@ -145,7 +145,7 @@ VIDEOS.append({
         {
             'name': 'Test',
             'thumb': '',
-            'video': link[0]
+            'video': link[0],
             'genre': 'Entertainment'
 
         }
