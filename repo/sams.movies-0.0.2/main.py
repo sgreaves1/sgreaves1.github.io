@@ -67,14 +67,13 @@ def api_request(case, channel_id=None):
         raise ValueError(resp["msg"])
 
 def update_channels():
-    _channels = api_request("get_all_channels")["channels"]
-    _category_list = []
-    _categories = []
-    for c in _channels:
-        if c.get("cat_id") not in _category_list:
-            _category_list.append(c.get("cat_id"))
-            _categories.append({"cat_id": c.get("cat_id"), "cat_name": c.get("cat_name")})
-    print(_channels)
+    return = api_request("get_all_channels")["channels"]
+#     _category_list = []
+#     _categories = []
+#     for c in _channels:
+#         if c.get("cat_id") not in _category_list:
+#             _category_list.append(c.get("cat_id"))
+#             _categories.append({"cat_id": c.get("cat_id"), "cat_name": c.get("cat_name")})
 
 def get_channel_links(pk_id):
     _channel = api_request("get_channel_link_with_token_latest", pk_id)["channel"][0]
@@ -90,8 +89,60 @@ def get_channel_links(pk_id):
                     print(link)
     return links
 
-update_channels()
+CHANNELS = update_channels()
 link = get_channel_links(77)
+
+CHANNELS2 = [
+    {
+        'name': 'BBC One North East (540p)',
+        'thumb': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/BBC_One_logo_%28box_variant%29.svg/2560px-BBC_One_logo_%28box_variant%29.svg.png',
+        'video': 'https://vs-hls-pushb-uk-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_one_north_east/mobile_wifi_main_sd_abr_v2_akamai_hls_live_http.m3u8',
+        'genre': 'Entertainment'
+    },
+    {
+        'name': '1HD Music Television (1080p) [Not 24/7]',
+        'thumb': 'https://freestreamstv.live/upload/source/1HD%20Music%20Channel.png',
+        'video': 'http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8',
+        'genre': 'Music'
+    },
+    {
+        'name': 'Greatest Hits',
+        'thumb': 'https://provider-static.plex.tv/epg/cms/staging/73c31029-967e-496f-a175-4e49112b4da1/stingray-greatest-hits_logo_dark.png',
+        'video': 'https://stream.ads.ottera.tv/playlist.m3u8?network_id=1385&livestream=1&live=1&app_bundle=com.plexapp.android&did=62274240-07e7-5d94-8dc8-ef68cf19e175&app_domain=app.plex.tv&app_name=plex&h=&w=&custom4=plex&gdpr=0&device_make=&device_model=&coppa=1&us_privacy=1---&custom_6=eHK8K_69v6Dss5oCUAbz&custom_7=61aa97d4113e1e5137fd5325',
+        'genre': 'Music'
+    },
+    {
+        'name': 'AMC Presents (1080p)',
+        'thumb': 'https://i.imgur.com/yngqRL8.png',
+        'video': 'https://amc-amcpresents-1.imdbtv.wurl.com/manifest/playlist.m3u8',
+        'genre': 'Entertainment'
+    },
+    {
+        'name': 'Hunt Channel (1080p)',
+        'thumb': 'https://i.imgur.com/DkvWWbE.png',
+        'video': 'https://1111296894.rsc.cdn77.org/LS-ATL-56868-1/index.m3u8',
+        'genre': 'Sport'
+    },
+    {
+        'name': 'IDG (720p)',
+        'thumb': 'https://i.imgur.com/M0omWCW.jpg',
+        'video': 'https://a.jsrdn.com/broadcast/529a360c04/+0000/c.m3u8',
+        'genre': 'News'
+    },
+    {
+        'name': 'Hard Knocks',
+        'thumb': 'https://provider-static.plex.tv/epg/images/ott_channels/logos/hardknocks_logo_dark.png',
+        'video': 'https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/HardKnocks-PLEX/121.m3u8?ads.plex_token=eHK8K_69v6Dss5oCUAbz&ads.channel_id=5fd115bdb7ef8d002dcf1820&ads.device_id=62274240-07e7-5d94-8dc8-ef68cf19e175&ads.dnt=0',
+        'genre': 'Sport'
+    },
+    {
+        'name': 'Test',
+        'thumb': '',
+        'video': link[0],
+        'genre': 'Entertainment'
+
+    }
+]
 
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = r.json()
@@ -99,57 +150,7 @@ VIDEOS.append({
     'name': 'Live TV',
     'thumb': '',
     'icon': 'fanart',
-    'channels': [
-        {
-            'name': 'BBC One North East (540p)',
-            'thumb': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/BBC_One_logo_%28box_variant%29.svg/2560px-BBC_One_logo_%28box_variant%29.svg.png',
-            'video': 'https://vs-hls-pushb-uk-live.akamaized.net/x=3/i=urn:bbc:pips:service:bbc_one_north_east/mobile_wifi_main_sd_abr_v2_akamai_hls_live_http.m3u8',
-            'genre': 'Entertainment'
-        },
-        {
-            'name': '1HD Music Television (1080p) [Not 24/7]',
-            'thumb': 'https://freestreamstv.live/upload/source/1HD%20Music%20Channel.png',
-            'video': 'http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8',
-            'genre': 'Music'
-        },
-        {
-            'name': 'Greatest Hits',
-            'thumb': 'https://provider-static.plex.tv/epg/cms/staging/73c31029-967e-496f-a175-4e49112b4da1/stingray-greatest-hits_logo_dark.png',
-            'video': 'https://stream.ads.ottera.tv/playlist.m3u8?network_id=1385&livestream=1&live=1&app_bundle=com.plexapp.android&did=62274240-07e7-5d94-8dc8-ef68cf19e175&app_domain=app.plex.tv&app_name=plex&h=&w=&custom4=plex&gdpr=0&device_make=&device_model=&coppa=1&us_privacy=1---&custom_6=eHK8K_69v6Dss5oCUAbz&custom_7=61aa97d4113e1e5137fd5325',
-            'genre': 'Music'
-        },
-        {
-            'name': 'AMC Presents (1080p)',
-            'thumb': 'https://i.imgur.com/yngqRL8.png',
-            'video': 'https://amc-amcpresents-1.imdbtv.wurl.com/manifest/playlist.m3u8',
-            'genre': 'Entertainment'
-        },
-        {
-            'name': 'Hunt Channel (1080p)',
-            'thumb': 'https://i.imgur.com/DkvWWbE.png',
-            'video': 'https://1111296894.rsc.cdn77.org/LS-ATL-56868-1/index.m3u8',
-            'genre': 'Sport'
-        },
-        {
-            'name': 'IDG (720p)',
-            'thumb': 'https://i.imgur.com/M0omWCW.jpg',
-            'video': 'https://a.jsrdn.com/broadcast/529a360c04/+0000/c.m3u8',
-            'genre': 'News'
-        },
-        {
-            'name': 'Hard Knocks',
-            'thumb': 'https://provider-static.plex.tv/epg/images/ott_channels/logos/hardknocks_logo_dark.png',
-            'video': 'https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/HardKnocks-PLEX/121.m3u8?ads.plex_token=eHK8K_69v6Dss5oCUAbz&ads.channel_id=5fd115bdb7ef8d002dcf1820&ads.device_id=62274240-07e7-5d94-8dc8-ef68cf19e175&ads.dnt=0',
-            'genre': 'Sport'
-        },
-        {
-            'name': 'Test',
-            'thumb': '',
-            'video': link[0],
-            'genre': 'Entertainment'
-
-        }
-    ]
+    'channels' : CHANNELS + CHANNELS2
 })
 
 def get_url(**kwargs):
