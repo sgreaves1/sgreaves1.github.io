@@ -5,13 +5,13 @@
 """
 Video addon that is compatible with Kodi 19.x "Matrix" and above
 """
+from __future__ import unicode_literals
+
 import sys
 from urllib.parse import urlencode, parse_qsl
 import xbmcgui
 import xbmcplugin
 import requests
-
-from __future__ import unicode_literals
 
 import os
 from base64 import b64encode, b64decode
