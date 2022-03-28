@@ -71,7 +71,7 @@ def update_channels():
     _channels_list = []
 #     _categories = []
     for c in _channels:
-        if c.get("country") == "US" OR c.get("country") == "UK"
+        if c["country"] == "US" or c["country"] == "UK"
             _channels_list.append({
                 'id' : c.get("pk_id"),
                 'name': c.get("channel_name"),
