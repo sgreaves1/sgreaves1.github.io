@@ -64,6 +64,12 @@ VIDEOS.append({
             'thumb': 'https://provider-static.plex.tv/epg/images/ott_channels/logos/hardknocks_logo_dark.png',
             'video': 'https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/HardKnocks-PLEX/121.m3u8?ads.plex_token=eHK8K_69v6Dss5oCUAbz&ads.channel_id=5fd115bdb7ef8d002dcf1820&ads.device_id=62274240-07e7-5d94-8dc8-ef68cf19e175&ads.dnt=0',
             'genre': 'Sport'
+        },
+        {
+            'name': 'Test',
+            'thumb': '',
+            'video': ' http://stream.tvtap.live:8081/live/uk-amc.stream/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9My8yOC8yMDIyIDg6MTA6NTkgUE0maGFzaF92YWx1ZT1kalRDWGFrZnh1Yk5WUXVRQXI4czVnPT0mdmFsaWRtaW51dGVzPTIw',
+            'genre': 'Entertainment'
         }
     ]
 })
