@@ -67,10 +67,19 @@ def api_request(case, channel_id=None):
         raise ValueError(resp["msg"])
 
 def update_channels():
-    return api_request("get_all_channels")["channels"]
-#     _category_list = []
+    _channels = api_request("get_all_channels")["channels"]
+    _channels_list = []
 #     _categories = []
-#     for c in _channels:
+    for c in _channels:
+        if c.get("country") == "US" OR c.get("country") == "UK"
+            _channels_list.append({
+                'id' : c.get("pk_id"),
+                'name': c.get("channel_name"),
+                'thumb': "https://rocktalk.net/tv/" + c.get("img"),
+                'video': '',
+                'genre': c.get("cat_name")
+            })
+    return _channels_list
 #         if c.get("cat_id") not in _category_list:
 #             _category_list.append(c.get("cat_id"))
 #             _categories.append({"cat_id": c.get("cat_id"), "cat_name": c.get("cat_name")})
