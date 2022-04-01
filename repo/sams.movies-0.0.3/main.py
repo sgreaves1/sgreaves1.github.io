@@ -153,13 +153,27 @@ CHANNELS2 = [
     }
 ]
 
-r =requests.get('http://samgreaves.com:3020/videos/kodi')
-VIDEOS = r.json()
+# r =requests.get('http://samgreaves.com:3020/videos/kodi')
+# VIDEOS = r.json()
+
+VIDEOS.append({
+    'name': 'Movies',
+    'thumb': '',
+    'icon': 'fanart'
+})
+
+VIDEOS.append({
+    'name': 'TV Shows',
+    'thumb': '',
+    'icon': 'fanart',
+    'shows' : []
+})
+
 VIDEOS.append({
     'name': 'Live TV',
     'thumb': '',
     'icon': 'fanart',
-    'channels' : CHANNELS + CHANNELS2
+    'channels' : []
 })
 
 def get_url(**kwargs):
@@ -176,10 +190,9 @@ def list_videos():
     xbmcplugin.setPluginCategory(_handle, 'Movies')
     xbmcplugin.setContent(_handle, 'videos')
 
-    movies = []
-    for x in VIDEOS:
-        if x['name'] == 'Movies':
-            movies = x['videos']
+    r = requests.get('http://samgreaves.com:3020/videos/kodi/Movies')
+
+    movies = r.json()
 
     for video in movies:
         list_item = xbmcgui.ListItem(label=video['name'])
@@ -197,10 +210,7 @@ def list_channels():
     xbmcplugin.setPluginCategory(_handle, 'Live TV')
     xbmcplugin.setContent(_handle, 'videos')
 
-    channels = []
-    for x in VIDEOS:
-        if x['name'] == 'Live TV':
-            channels = x['channels']
+    channels = CHANNELS + CHANNELS2
 
     for channel in channels:
         list_item = xbmcgui.ListItem(label=channel['name'])
@@ -219,10 +229,8 @@ def list_shows():
     xbmcplugin.setPluginCategory(_handle, 'TV Shows')
     xbmcplugin.setContent(_handle, 'videos')
 
-    shows = []
-    for x in VIDEOS:
-        if x['name'] == 'TV Shows':
-            shows = x['shows']
+    r = requests.get('http://samgreaves.com:3020/videos/kodi/TV Shows')
+    shows = r.json()
 
     for show in shows:
          list_item = xbmcgui.ListItem(label=show['name'])
