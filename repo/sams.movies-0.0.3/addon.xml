@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="sams.movies"
-version="0.0.2"
+version="0.0.3"
 name="Sams Movies"
 provider-name="Sam">
 <requires>
@@ -21,6 +21,6 @@ provider-name="Sam">
     <screenshot>resources\screenshot-02.jpg</screenshot>
     <screenshot>resources\screenshot-03.jpg</screenshot>    
   </assets>
-  <news>Plays TV shows now</news>
+  <news>Plays Live TV from rocktalk.net/tv</news>
 </extension>
 </addon>
