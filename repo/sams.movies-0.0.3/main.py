@@ -98,7 +98,7 @@ def get_channel_links(pk_id):
                     print(link)
     return links
 
-CHANNELS = update_channels()
+CHANNELS = []
 link = get_channel_links(77)
 
 CHANNELS2 = [
@@ -143,13 +143,6 @@ CHANNELS2 = [
         'thumb': 'https://provider-static.plex.tv/epg/images/ott_channels/logos/hardknocks_logo_dark.png',
         'video': 'https://d3uyzhwvmemdyf.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/HardKnocks-PLEX/121.m3u8?ads.plex_token=eHK8K_69v6Dss5oCUAbz&ads.channel_id=5fd115bdb7ef8d002dcf1820&ads.device_id=62274240-07e7-5d94-8dc8-ef68cf19e175&ads.dnt=0',
         'genre': 'Sport'
-    },
-    {
-        'name': 'Test',
-        'thumb': '',
-        'video': link[0],
-        'genre': 'Entertainment'
-
     }
 ]
 
@@ -159,7 +152,8 @@ CHANNELS2 = [
 VIDEOS.append({
     'name': 'Movies',
     'thumb': '',
-    'icon': 'fanart'
+    'icon': 'fanart',
+    'videos': []
 })
 
 VIDEOS.append({
@@ -210,7 +204,7 @@ def list_channels():
     xbmcplugin.setPluginCategory(_handle, 'Live TV')
     xbmcplugin.setContent(_handle, 'videos')
 
-    channels = CHANNELS + CHANNELS2
+    channels = update_channels() + CHANNELS2
 
     for channel in channels:
         list_item = xbmcgui.ListItem(label=channel['name'])
