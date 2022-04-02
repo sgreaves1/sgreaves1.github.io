@@ -99,7 +99,6 @@ def get_channel_links(pk_id):
     return links
 
 CHANNELS = []
-link = get_channel_links(77)
 
 CHANNELS2 = [
     {
@@ -148,7 +147,7 @@ CHANNELS2 = [
 
 # r =requests.get('http://samgreaves.com:3020/videos/kodi')
 # VIDEOS = r.json()
-
+VIDEOS = []
 VIDEOS.append({
     'name': 'Movies',
     'thumb': '',
