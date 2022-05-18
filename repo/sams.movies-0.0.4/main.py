@@ -233,33 +233,30 @@ def list_shows():
          list_item.setInfo('video', {'title': show['name'],
                                      'genre': show['name'],
                                      'mediatype': 'video'})
-         url = get_url(action='listing', show=show['name'], category='show')
+         url = get_url(action='listing', show=show['name'], showId=show['id'], category='show')
          is_folder = True
          xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
 
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
-def list_seasons(showName):
+def list_seasons(showName, showId):
     xbmcplugin.setPluginCategory(_handle, showName)
     xbmcplugin.setContent(_handle, 'videos')
-    seasons = []
-    for category in VIDEOS:
-        if category['name'] == 'TV Shows':
-            for show in category['shows']:
-                if show['name'] == showName:
-                    seasons = show['seasons']
+
+    r = requests.get('http://samgreaves.com:3020/videos/kodi/TV Shows/' + showId)
+    seasons = r.json()
 
     for season in seasons:
-        list_item = xbmcgui.ListItem(label='Season ' + str(season['number']))
+        list_item = xbmcgui.ListItem(label='Season ' + str(season['name']))
         list_item.setArt({'thumb': season['thumb'],
                           'icon': season['thumb'],
                           'fanart': season['thumb']})
-        list_item.setInfo('video', {'title': 'Season ' + str(season['number']),
-                                    'genre': 'Season ' + str(season['number']),
+        list_item.setInfo('video', {'title': 'Season ' + str(season['name']),
+                                    'genre': 'Season ' + str(season['name']),
                                     'mediatype': 'video'})
 
-        url = get_url(action='listing', category='episodes', show=showName, season=season['number'])
+        url = get_url(action='listing', category='episodes', show=showName, season=season['name'])
         is_folder = True
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
@@ -346,7 +343,7 @@ def router(paramstring):
         elif params['action'] == 'listing' and params['category'] == 'TV Shows':
             list_shows()
         elif params['action'] == 'listing' and params['category'] == 'show':
-            list_seasons(params['show'])
+            list_seasons(params['show'], params['showId'])
         elif params['action'] == 'listing' and params['category'] == 'episodes':
             list_episodes(params['show'], params['season'])
         elif params['action'] == 'listing' and params['category'] == 'Live TV':
