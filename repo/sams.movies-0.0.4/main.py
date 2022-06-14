@@ -275,7 +275,7 @@ def list_episodes(showName, showId, seasonNumber):
     seasons = r.json()
 
     for season in seasons:
-        for episode in season.episodes:
+        for episode in season['episodes']:
             list_item = xbmcgui.ListItem(label=episode['name'])
             list_item.setArt({'thumb': episode['thumb'],
                               'icon': episode['thumb'],
