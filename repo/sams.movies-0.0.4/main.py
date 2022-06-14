@@ -256,13 +256,18 @@ def list_seasons(showName, showId):
                                     'genre': 'Season ' + str(season['name']),
                                     'mediatype': 'video'})
 
-        url = get_url(action='listing', category='episodes', show=showName, season=season['name'])
+        seasonNumber = ""
+        for m in str(season['name']):
+            if m.isdigit():
+                seasonNumber = seasonNumber + m
+
+        url = get_url(action='listing', category='episodes', showId=showId, seasonNumber=seasonNumber)
         is_folder = True
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
-def list_episodes(showName, seasonNumber):
+def list_episodes(showId, seasonNumber):
     xbmcplugin.setPluginCategory(_handle, showName + '/ Season ' + str(seasonNumber))
     xbmcplugin.setContent(_handle, 'videos')
 
@@ -339,7 +344,7 @@ def router(paramstring):
         elif params['action'] == 'listing' and params['category'] == 'show':
             list_seasons(params['show'], params['showId'])
         elif params['action'] == 'listing' and params['category'] == 'episodes':
-            list_episodes(params['show'], params['season'])
+            list_episodes(params['showId'], params['seasonNumber'])
         elif params['action'] == 'listing' and params['category'] == 'Live TV':
             list_channels()
         else:
