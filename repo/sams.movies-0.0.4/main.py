@@ -274,9 +274,8 @@ def list_episodes(showName, showId, seasonNumber):
     r = requests.get('http://samgreaves.com:3020/videos/kodi/TV Shows/' + showId + '/' + seasonNumber)
     seasons = r.json()
 
-    for season in seasons
-
-        for episode in season.episodes
+    for season in seasons:
+        for episode in season.episodes:
             list_item = xbmcgui.ListItem(label=episode['name'])
             list_item.setArt({'thumb': episode['thumb'],
                               'icon': episode['thumb'],
