@@ -344,7 +344,7 @@ def router(paramstring):
         elif params['action'] == 'listing' and params['category'] == 'show':
             list_seasons(params['show'], params['showId'])
         elif params['action'] == 'listing' and params['category'] == 'episodes':
-            list_episodes(params['showId'], params['seasonNumber'])
+            list_episodes(params['showName'], params['showId'], params['seasonNumber'])
         elif params['action'] == 'listing' and params['category'] == 'Live TV':
             list_channels()
         else:
