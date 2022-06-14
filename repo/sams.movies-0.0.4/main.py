@@ -266,16 +266,10 @@ def list_episodes(showName, seasonNumber):
     xbmcplugin.setPluginCategory(_handle, showName + '/ Season ' + str(seasonNumber))
     xbmcplugin.setContent(_handle, 'videos')
 
-    episodes = []
-    for category in VIDEOS:
-        if category['name'] == 'TV Shows':
-            for show in category['shows']:
-                if show['name'] == showName:
-                    for season in show['seasons']:
-                        if str(season['number']) == seasonNumber:
-                            episodes = season['episodes']
+    r = requests.get('http://samgreaves.com:3020/videos/kodi/TV Shows/' + showId + '/' + seasonNumber)
+    season = r.json()
 
-    for episode in episodes:
+    for episode in season.episodes:
         list_item = xbmcgui.ListItem(label=episode['name'])
         list_item.setArt({'thumb': episode['thumb'],
                           'icon': episode['thumb'],
