@@ -272,20 +272,23 @@ def list_episodes(showName, showId, seasonNumber):
     xbmcplugin.setContent(_handle, 'videos')
 
     r = requests.get('http://samgreaves.com:3020/videos/kodi/TV Shows/' + showId + '/' + seasonNumber)
-    season = r.json()
+    seasons = r.json()
 
-    for episode in season[0].episodes:
-        list_item = xbmcgui.ListItem(label=episode['name'])
-        list_item.setArt({'thumb': episode['thumb'],
-                          'icon': episode['thumb'],
-                          'fanart': episode['thumb']})
-        list_item.setInfo('video', {'title': episode['name'],
-                                    'genre': episode['name'],
-                                    'mediatype': 'video'})
-        list_item.setProperty('IsPlayable', 'true')
-        url = get_url(action='play', video=episode['video'])
-        is_folder = False
-        xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+    for season in seasons
+
+        for episode in season.episodes
+            list_item = xbmcgui.ListItem(label=episode['name'])
+            list_item.setArt({'thumb': episode['thumb'],
+                              'icon': episode['thumb'],
+                              'fanart': episode['thumb']})
+            list_item.setInfo('video', {'title': episode['name'],
+                                        'genre': episode['name'],
+                                        'mediatype': 'video'})
+            list_item.setProperty('IsPlayable', 'true')
+            url = get_url(action='play', video=episode['video'])
+            is_folder = False
+            xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
+
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
