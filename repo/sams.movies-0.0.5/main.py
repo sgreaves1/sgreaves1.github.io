@@ -318,8 +318,7 @@ def play_video(path):
     :type path: str
     """
     # Create a playable item with a path to play.
-    play_item = xbmcgui.ListItem(path=path)
-    play_item.setProperty("inputstream.adaptive.stream_headers","username={Sam}")
+    play_item = xbmcgui.ListItem(path=path + "|username=sam")
     # Pass the item to the Kodi player.
     xbmcplugin.setResolvedUrl(_handle, True, listitem=play_item)
 
