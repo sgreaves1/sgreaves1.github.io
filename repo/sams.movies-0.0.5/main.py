@@ -30,7 +30,6 @@ _handle = int(sys.argv[1])
 
 base_url = "https://rocktalk.net/tv/index.php"  # 31.220.0.210 31.220.0.8
 user_agent = "Dalvik/2.1.0 (Linux; U; Android 5.1.1; AFTS Build/LVY48F)"
-username = "Sam"
 player_user_agent = "mediaPlayerhttp/2.5 (Linux;Android 5.1) ExoPlayerLib/2.6.1"
 s = requests.Session()
 s.headers.update({"User-Agent": "USER-AGENT-tvtap-APP-V2"})
@@ -320,7 +319,7 @@ def play_video(path):
     """
     # Create a playable item with a path to play.
     play_item = xbmcgui.ListItem(path=path)
-    play_item.setProperty("username",username)
+    play_item.setProperty("inputstream.adaptive.stream_headers","username={Sam}")
     # Pass the item to the Kodi player.
     xbmcplugin.setResolvedUrl(_handle, True, listitem=play_item)
 
